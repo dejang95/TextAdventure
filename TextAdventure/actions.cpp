@@ -36,13 +36,7 @@ void Gameplay::move() {
 
 	if (move == "north" || move == "N" || move == "North") {
 
-		if (ver < map_max && (!wall(ver+1,hor)) ) {
-
-			++ver;
-
-			map_items();
-
-		}
+		if (ver < map_max && (!wall(ver+1,hor)) ) ++ver;
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
@@ -53,9 +47,6 @@ void Gameplay::move() {
 
 			++ver;
 			--hor;
-
-			map_items();
-
 		}
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
@@ -67,9 +58,6 @@ void Gameplay::move() {
 
 			++ver;
 			++hor;
-
-			map_items();
-
 		}
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
@@ -78,13 +66,7 @@ void Gameplay::move() {
 
 	else if (move == "south" || move == "S" || move == "South") {
 
-		if (ver > 0) {
-
-			--ver;
-
-			map_items();
-
-		}
+		if (ver > 0) --ver;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 
@@ -96,8 +78,6 @@ void Gameplay::move() {
 
 			--ver;
 			--hor;
-
-			map_items();
 
 		}
 
@@ -111,9 +91,6 @@ void Gameplay::move() {
 
 			--ver;
 			++hor;
-
-			map_items();
-
 		}
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
@@ -122,26 +99,14 @@ void Gameplay::move() {
 
 	else if (move == "east" || move == "E" || move == "East") {
 
-		if (hor > 0) {
-
-			--hor;
-
-			map_items();
-
-		}
+		if (hor > 0) --hor;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 	}
 
 	else if (move == "west" || move == "W" || move == "West") {
 
-		if (hor < map_max) {
-
-			++hor;
-
-			map_items();
-
-		}
+		if (hor < map_max) ++hor;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 
@@ -150,6 +115,8 @@ void Gameplay::move() {
 	else cout << " This direction doesn't exist! " << endl;
 
 	checkpoints();
+
+	map_items();
 
 }
 
