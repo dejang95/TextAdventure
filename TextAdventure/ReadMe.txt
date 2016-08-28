@@ -44,7 +44,8 @@ StdAfx.h, StdAfx.cpp
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
 
-Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of this game will be limited until stated otherwise.
+Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of
+this game will be limited until stated otherwise.
     Not all files are stated above in the "FILES OVERVIEW" simply because that there could be a few changes which would have for a 
     result for a files to be overwritten or deleted. Only the files that are "here to stay" will be in the "FILES OVERVIEW" until the 
     completition of this project. When completed, this project will have all the files descriptions in the "FILES OVERVIEW" section.
