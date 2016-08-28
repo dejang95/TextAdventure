@@ -4,9 +4,7 @@
 
 Overview
 
-Text-Adventure games were popular in the last century, and out of the curiosity and advice of my friend I have decided to make one of my own. 
-I have took this as my summer project which will help me learn a couple of new things about programming, the language C++ and also help
-me stay in shape for the following semester. This is also the first "big project" and the first project I am sharing on the git. 
+Text-Adventure games were popular in the last century, and out of the curiosity and advice of my friend I have decided to make one of my own. I have took this as my summer project which will help me learn a couple of new things about programming, the language C++ and also help me stay in shape for the following semester. This is also the first "big project" and the first project I am sharing on the git. 
 
 /////////////////////////////////////////////////////////////////////////////
 *************** FILES OVERVIEW **************
@@ -44,10 +42,6 @@ StdAfx.h, StdAfx.cpp
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
 
-Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of
-this game will be limited until stated otherwise.
-    Not all files are stated above in the "FILES OVERVIEW" simply because that there could be a few changes which would have for a 
-    result for a files to be overwritten or deleted. Only the files that are "here to stay" will be in the "FILES OVERVIEW" until the 
-    completition of this project. When completed, this project will have all the files descriptions in the "FILES OVERVIEW" section.
+Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of this game will be limited until stated otherwise. Not all files are stated above in the "FILES OVERVIEW" simply because that there could be a few changes which would have for a result for a files to be overwritten or deleted. Only the files that are "here to stay" will be in the "FILES OVERVIEW" until the completition of this project. When completed, this project will have all the files descriptions in the "FILES OVERVIEW" section.
 
 /////////////////////////////////////////////////////////////////////////////
