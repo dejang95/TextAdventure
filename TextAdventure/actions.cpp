@@ -14,55 +14,14 @@ void Gameplay::actions() {
 		cout << " What would you like to do next? [ Hint: If you wish to see the list of avaliable commands, type in ''help''.] " << endl;
 		cin >> action;
 
-		if (action == "move") {
-
-			move();
-
-		}
-
-		else if (action == "help") {
-
-			help();
-
-		}
-
-
-		else if (action == "pick") {
-
-			pick();
-
-		}
-
-		else if (action == "inventory") {
-
-			list_invetory();
-		
-
-		}
-
-		else if (action == "location") {
-
-			location();
-
-		}
-
-		else if (action == "stats") {
-
-			players_data();
-
-		}
-
-		else if (action == "use") {
-
-			use();
-
-		}
-
-		else if (action == "clear") {
-
-			system("cls");
-		}
-
+		if (action == "move") move();
+		else if (action == "help") help();
+		else if (action == "pick") pick();
+		else if (action == "inventory") list_invetory();
+		else if (action == "location") location();
+		else if (action == "stats") players_data();
+		else if (action == "use") use();
+		else if (action == "clear") system("cls");
 		else cout << " Please enter an existing command! " << endl;
 
 	}
