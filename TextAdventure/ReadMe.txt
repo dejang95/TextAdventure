@@ -11,13 +11,13 @@ Text-Adventure games were popular in the last century, and out of the curiosity 
 /////////////////////////////////////////////////////////////////////////////
 
 TextAdventure.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
+    This is the main project file for VC++ projects.
     It contains information about the version of Visual C++ that generated the file, and
     information about the platforms, configurations, and project features selected with the
     Application Wizard.
 
 TextAdventure.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
+    This is the filters file for VC++ projects.
     It contains information about the association between the files in your project 
     and the filters. This association is used in the IDE to show grouping of files with
     similar extensions under a specific node (for e.g. ".cpp" files are associated with the
@@ -42,6 +42,6 @@ StdAfx.h, StdAfx.cpp
 /////////////////////////////////////////////////////////////////////////////
 Other notes:
 
-Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of this game will be limited until stated otherwise. Not all files are stated above in the "FILES OVERVIEW" simply because that there could be a few changes which would have for a result for a files to be overwritten or deleted. Only the files that are "here to stay" will be in the "FILES OVERVIEW" until the completition of this project. When completed, this project will have all the files descriptions in the "FILES OVERVIEW" section.
+Up to this date this is still an unfinished project. This means that the game itself will always function but the functionallity of this game will be limited until stated otherwise. Not all files are stated above in the "FILES OVERVIEW" simply because that there could be a few changes which would have for a result for a files to be overwritten or deleted. Only the files that are "here to stay" will be in the "FILES OVERVIEW" until the completition of this project. When completed, this project will have all the files descriptions in the "FILES OVERVIEW" section. 
 
 /////////////////////////////////////////////////////////////////////////////
