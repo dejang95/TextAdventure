@@ -7,18 +7,10 @@ using namespace std;
 
 Gameplay::Gameplay(string name, int age) : name(name), age(age > 0 ? age : 18), checkpoint(0),  ver(1), hor(0), item_num(0), free_slot(0), money(20), health(100)
 {
-
-	for (int i = 0; i < 100; i++) {
-
-		players_items[i] = 0;
-
-	}
-
+	for (int i = 0; i < 100; i++) players_items[i] = 0;
 }
 
-
 Gameplay::~Gameplay(){}
-
 
 void Gameplay::intro() {
 

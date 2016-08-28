@@ -19,7 +19,6 @@ int main()
 {
 	int age = 0;
 	string name;
-	char answer;
 
 	intro();
 	
@@ -32,20 +31,11 @@ int main()
 	system("cls");
 
 	Gameplay player (name, age);
-	
+
 	player.intro();
 
-	cout << " Request further instructions? [ Y/N ]" << endl;
-	cin >> answer;
-
-	system("cls");
-
-	if (answer == 'Y' || answer == 'y') {
-
-		cout << " **** OBJECTIVE **** " << endl;
-		player.checkpoint_null();
-
-	}
+	cout << " **** OBJECTIVE **** " << endl;
+	player.checkpoint_null();
 
 	return 0;
 }
