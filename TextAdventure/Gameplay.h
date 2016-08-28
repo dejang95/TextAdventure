@@ -6,52 +6,52 @@ using namespace std;
 class Gameplay
 {
 	string name;
-	int age, money, health;
-	int checkpoint;
+	int age, money, health;	
+	int checkpoint;		// tracks the checkpoints that the user have passed
 	
-	const int map_max = 100;
-	int ver, hor;
+	const int map_max = 100;	// the possible value of "hor" or "ver" cannot be greater than "map_max"
+	int ver, hor;	
 
 	int item_num;
-	int players_items[100];
-	int free_slot;
+	int players_items[100];	// inventory
+	int free_slot;	// tracks the next free slot in the inventory
 
 public:
 
-	void intro();
+	void intro();		// gives a story intro
 
-	void players_data();
+	void players_data();	// reads players data like: name, age, money, health
 
-	void actions();
+	void actions();		// prompts the user to enter the next action
 
-	void move();
+	void move();	// makes it possible for the user to move in wanted direction
 
-	bool wall(int vertically, int horizontally);
+	bool wall(int vertically, int horizontally);	// sets walls on the map for the user
 
-	void map_items();
+	void map_items();	// checks if on the user's position there is a certain item
 
-	void help();
+	void help();	// gives a list of commands that the user can enter in order to play the game
 
-	void list_invetory();
+	void list_invetory();	// gives a list of items in the inventory
 
-	void pick();
+	void pick();	// if the item have been found, makes it possible to save an item in the inventory
 
-	void use ();
+	void use ();	// makes the use of the items stored in the inventory
 
-	void location();
+	void location();	// reads the users exact location on the map
 
-	bool picked();
+	bool picked();	// checks if the item was already picked and stored in the inventory
 
-	void checkpoints();
+	void checkpoints();	// checks if on the user's position there is a checkpoint
 
-	void checkpoint_null();
+	void checkpoint_null();	// first objective
 
-	void checkpoint_one();
+	void checkpoint_one();	// second objective
 
-	void checkpoint_two();
+	void checkpoint_two();	// third objective
 
-	Gameplay(string name = "player", int age = 18 );
+	Gameplay(string name = "player", int age = 18 );	// default construcor
 	
-	~Gameplay();
+	~Gameplay();	// default deconstructor
 };
 
