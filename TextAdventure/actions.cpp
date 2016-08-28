@@ -38,9 +38,7 @@ void Gameplay::move() {
 
 		if (ver < map_max && (!wall(ver+1,hor)) ) {
 
-			position[ver][hor] = false;
-
-			position[++ver][hor] = true;
+			++ver;
 
 			map_items();
 
@@ -53,9 +51,8 @@ void Gameplay::move() {
 
 		if (ver < map_max && hor > 0) {
 
-			position[ver][hor] = false;
-
-			position[++ver][--hor] = true;
+			++ver;
+			--hor;
 
 			map_items();
 
@@ -68,9 +65,8 @@ void Gameplay::move() {
 
 		if (ver < map_max && hor < map_max) {
 
-			position[ver][hor] = false;
-
-			position[++ver][++hor] = true;
+			++ver;
+			++hor;
 
 			map_items();
 
@@ -84,9 +80,7 @@ void Gameplay::move() {
 
 		if (ver > 0) {
 
-			position[ver][hor] = false;
-
-			position[--ver][hor] = true;
+			--ver;
 
 			map_items();
 
@@ -100,9 +94,8 @@ void Gameplay::move() {
 
 		if (ver > 0 && hor > 0) {
 
-			position[ver][hor] = false;
-
-			position[--ver][--hor] = true;
+			--ver;
+			--hor;
 
 			map_items();
 
@@ -116,9 +109,8 @@ void Gameplay::move() {
 
 		if (ver > 0 && hor < map_max) {
 
-			position[ver][hor] = false;
-
-			position[--ver][++hor] = true;
+			--ver;
+			++hor;
 
 			map_items();
 
@@ -132,11 +124,7 @@ void Gameplay::move() {
 
 		if (hor > 0) {
 
-			position[ver][hor] = false;
-
 			--hor;
-
-			position[ver][hor] = true;
 
 			map_items();
 
@@ -149,11 +137,7 @@ void Gameplay::move() {
 
 		if (hor < map_max) {
 
-			position[ver][hor] = false;
-
 			++hor;
-
-			position[ver][hor] = true;
 
 			map_items();
 
@@ -325,7 +309,7 @@ bool Gameplay::picked() {
 
 void Gameplay::checkpoints() {
 
-	if (position[1][2]) {
+	if (ver == 1 && hor == 2) {
 
 		cout << endl;
 		cout << "MESSAGE: Success! You found the terminal! " << endl;
@@ -336,7 +320,7 @@ void Gameplay::checkpoints() {
 
 	}
 
-	if (position[4][6]) {
+	if (ver == 4 && hor == 6) {
 
 		cout << endl;
 		cout << "MESSAGE: Success! You made it to your second checkpoint! " << endl;

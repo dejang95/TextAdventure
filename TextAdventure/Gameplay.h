@@ -10,7 +10,6 @@ class Gameplay
 	int checkpoint;
 	
 	const int map_max = 100;
-	bool position[100][100];
 	int ver, hor;
 
 	int item_num;

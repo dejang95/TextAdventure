@@ -8,15 +8,6 @@ using namespace std;
 Gameplay::Gameplay(string name, int age) : name(name), age(age > 0 ? age : 18), checkpoint(0),  ver(1), hor(0), item_num(0), free_slot(0), money(20), health(100)
 {
 
-	for (int v = 0; v < 100; v++) {
-
-		for (int h = 0; h < 100; h++) {
-
-			position[v][h] = false;
-
-		}
-	}
-
 	for (int i = 0; i < 100; i++) {
 
 		players_items[i] = 0;
@@ -43,7 +34,7 @@ void Gameplay::intro() {
 void Gameplay::map_items() {
 	
 
-	if (position[2][1]) {
+	if (ver == 2 && hor == 1) {
 
 		item_num = 1;
 
@@ -56,7 +47,7 @@ void Gameplay::map_items() {
 		else cout << " No Items have been found here. " << endl;
 	}
 
-	else if (position[1][1]) {
+	else if (ver == 1 && hor == 1) {
 
 		item_num = 2;
 
@@ -70,7 +61,7 @@ void Gameplay::map_items() {
 
 	}
 
-	else if (position[0][1]) {
+	else if (ver == 1 && hor == 0) {
 
 		item_num = 3;
 
@@ -84,7 +75,7 @@ void Gameplay::map_items() {
 
 	}
 
-	else if (position[0][2]) {
+	else if (ver == 0 && hor == 2) {
 
 		item_num = 4;
 
