@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void intro() {
+void main_intro() {
 
 	cout << " There we go. After so many years of Hollywood projections, one of them has finally come true. " << endl;
 	cout << " The third kind has invaded our world, and now we are at the greatest war we have ever been in. " << endl;
@@ -20,7 +20,7 @@ int main()
 	int age = 0;
 	string name;
 
-	intro();
+	main_intro();
 	
 	cout << " Please enter your name: " << endl;
 	cin >> name;
@@ -32,7 +32,7 @@ int main()
 
 	Gameplay player (name, age);
 
-	player.intro();
+	player.sitrep();
 
 	cout << " **** OBJECTIVE **** " << endl;
 	player.checkpoint_null();

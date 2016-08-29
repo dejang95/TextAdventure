@@ -18,7 +18,7 @@ class Gameplay
 
 public:
 
-	void intro();		// gives a story intro
+	void sitrep();		// situation report
 
 	void players_data();	// reads players data like: name, age, money, health
 
