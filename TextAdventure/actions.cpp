@@ -27,9 +27,12 @@ void Gameplay::actions() {
 	}
 }
 
-void Gameplay::move() {
+void Gameplay::move() {	
 
 	string move;
+
+	int old_ver = ver;		//saves current position of ver and hor before moving
+	int old_hor = hor;
 
 	cout << " In what direction would you like to move?" << endl;
 	cin >> move;
@@ -114,9 +117,12 @@ void Gameplay::move() {
 
 	else cout << " This direction doesn't exist! " << endl;
 
-	checkpoints();
-
-	map_items();
+	if (old_ver != ver || old_hor != hor) {						// checks if either value is changed. If it is, that means the direction we moved to is valid.
+																// which than further suggests that there is a possibillity for an item or a checkpoint to be found on the following position.
+		checkpoints();											// otherwise, the functions would run even if we hit a wall.  For example:
+		map_items();											/* in the case of function "map_items()", means we would get a message: " there is no item found!"
+																	even though we've hit the wall, which doesn't make very much sense. */
+	}
 
 }
 
