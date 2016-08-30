@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Gameplay::actions() {
+void Gameplay::enter_command() {
 
 	string action;
 
@@ -16,11 +16,11 @@ void Gameplay::actions() {
 
 		if (action == "move") move();
 		else if (action == "help") help();
-		else if (action == "pick") pick();
+		else if (action == "pick") pick_item();
 		else if (action == "inventory") list_invetory();
-		else if (action == "location") location();
+		else if (action == "location") read_location();
 		else if (action == "stats") players_data();
-		else if (action == "use") use();
+		else if (action == "use") use_item();
 		else if (action == "clear") system("cls");
 		else cout << " Please enter an existing command! " << endl;
 
@@ -119,7 +119,7 @@ void Gameplay::move() {
 
 	if (old_ver != ver || old_hor != hor) {						// checks if either value is changed. If it is, that means the direction we moved to is valid.
 																// which than further suggests that there is a possibillity for an item or a checkpoint to be found on the following position.
-		checkpoints();											// otherwise, the functions would run even if we hit a wall.  For example:
+		checkpoints_position();											// otherwise, the functions would run even if we hit a wall.  For example:
 		map_items();											/* in the case of function "map_items()", means we would get a message: " there is no item found!"
 																	even though we've hit the wall, which doesn't make very much sense. */
 	}
@@ -175,7 +175,7 @@ void Gameplay::list_invetory() {					// ***** LIST INVENTORY *****
 
 }
 
-void Gameplay::use() {							// ****** USE ****** ( Not finished yet ) 
+void Gameplay::use_item() {							// ****** USE ****** ( Not finished yet ) 
 
 	if (!free_slot) {
 
@@ -197,7 +197,7 @@ void Gameplay::use() {							// ****** USE ****** ( Not finished yet )
 
 		item_num = answer;
 
-		if (picked()) {
+		if (item_picked()) {
 
 			switch (answer) {
 
@@ -221,15 +221,15 @@ void Gameplay::use() {							// ****** USE ****** ( Not finished yet )
 
 			cout << " You don't have an item under number " << answer << " in your inventory! Please, try again. " << endl;
 			cout << endl;
-			use();
+			use_item();
 		}
 	}
 
-	actions();
+	enter_command();
 
 }
 
-void Gameplay::location() {
+void Gameplay::read_location() {
 
 	cout << endl;
 	cout << " Your current location is " << ver << " vertically and " << hor << " horizontally. " << endl;
@@ -248,7 +248,7 @@ void Gameplay::players_data() {
 }
 
 
-void Gameplay::pick() {
+void Gameplay::pick_item() {
 
 	if (item_num == 0) {
 
@@ -264,7 +264,7 @@ void Gameplay::pick() {
 	}
 }
 
-bool Gameplay::picked() {
+bool Gameplay::item_picked() {
 
 	for (int i = 0; players_items[i] != 0; i++) {
 
@@ -280,7 +280,7 @@ bool Gameplay::picked() {
 
 }
 
-void Gameplay::checkpoints() {
+void Gameplay::checkpoints_position() {
 
 	if (ver == 1 && hor == 2) {
 

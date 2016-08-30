@@ -22,7 +22,7 @@ public:
 
 	void players_data();	// reads players data like: name, age, money, health
 
-	void actions();		// prompts the user to enter the next action
+	void enter_command();		// prompts the user to enter the next action
 
 	void move();	// makes it possible for the user to move in wanted direction
 
@@ -34,15 +34,15 @@ public:
 
 	void list_invetory();	// gives a list of items in the inventory
 
-	void pick();	// if the item have been found, makes it possible to save an item in the inventory
+	void pick_item();	// if the item have been found, makes it possible to save an item in the inventory
 
-	void use ();	// makes the use of the items stored in the inventory
+	void use_item();	// makes the use of the items stored in the inventory
 
-	void location();	// reads the users exact location on the map
+	void read_location();	// reads the users exact location on the map
 
-	bool picked();	// checks if the item was already picked and stored in the inventory
+	bool item_picked();	// checks if the item was already picked and stored in the inventory
 
-	void checkpoints();	// checks if on the user's position there is a checkpoint
+	void checkpoints_position();	// checks if on the user's position there is a checkpoint
 
 	void checkpoint_null();	// first objective
 

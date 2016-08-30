@@ -11,7 +11,7 @@ void Gameplay::checkpoint_null() {
 
 	checkpoint = 0;
 
-	actions();
+	enter_command();
 }
 
 void Gameplay::checkpoint_one() {
@@ -22,7 +22,7 @@ void Gameplay::checkpoint_one() {
 
 	checkpoint = 1;
 
-	actions();
+	enter_command();
 
 }
 
@@ -34,5 +34,5 @@ void Gameplay::checkpoint_two() {
 
 	checkpoint = 2;
 
-	actions();
+	enter_command();
 }

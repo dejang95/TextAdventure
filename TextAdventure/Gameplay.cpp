@@ -30,7 +30,7 @@ void Gameplay::map_items() {
 
 		item_num = 1;
 
-		if (!picked()) {		// "picked()" - checks if we already have this item in the inventory
+		if (!item_picked()) {		// "picked()" - checks if we already have this item in the inventory
 
 			cout << " You've found an USB flash drive! " << endl;
 
@@ -43,7 +43,7 @@ void Gameplay::map_items() {
 
 		item_num = 2;
 
-		if (!picked()) {
+		if (!item_picked()) {
 		
 			cout << " You've found a SIM Card! " << endl;
 
@@ -57,7 +57,7 @@ void Gameplay::map_items() {
 
 		item_num = 3;
 
-		if (!picked()) {
+		if (!item_picked()) {
 
 			cout << " You've found an SD Card! " << endl;
 
@@ -71,7 +71,7 @@ void Gameplay::map_items() {
 
 		item_num = 4;
 
-		if (!picked()) {
+		if (!item_picked()) {
 
 			cout << " You've found a Light Torch! " << endl;
 
@@ -83,6 +83,6 @@ void Gameplay::map_items() {
 
 	else cout << " No Items have been found here. " << endl;
 
-	actions();
+	enter_command();
 
 }
