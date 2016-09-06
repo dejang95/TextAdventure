@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gameplay.h" />
+    <ClInclude Include="Items.h" />
+    <ClInclude Include="Print.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -153,6 +155,8 @@
     <ClCompile Include="actions.cpp" />
     <ClCompile Include="checkpoints.cpp" />
     <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="Items.cpp" />
+    <ClCompile Include="Print.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

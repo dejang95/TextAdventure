@@ -2,7 +2,8 @@
 #include <string>
 #include "stdafx.h"
 #include "Gameplay.h"
-
+#include "Items.h"
+#include "Print.h"
 using namespace std;
 
 void Gameplay::enter_command() {
@@ -11,16 +12,19 @@ void Gameplay::enter_command() {
 
 	while (true) {
 
+		item.update_values(axis_Y, axis_X, checkpoint);
+		print.update_values(axis_Y, axis_X, name, age, health, money);
+
 		cout << " What would you like to do next? [ Hint: If you wish to see the list of avaliable commands, type in ''help''.] " << endl;
 		cin >> action;
 
 		if (action == "move") move();
-		else if (action == "help") help();
-		else if (action == "pick") pick_item();
-		else if (action == "inventory") list_invetory();
-		else if (action == "location") read_location();
-		else if (action == "stats") players_data();
-		else if (action == "use") use_item();
+		else if (action == "help") print.commands();
+		else if (action == "pick") item.save();
+		else if (action == "inventory") item.read_inventory();
+		else if (action == "location") print.location();
+		else if (action == "stats") print.players_data();
+		//else if (action == "use") item.use();
 		else if (action == "clear") system("cls");
 		else cout << " Please enter an existing command! " << endl;
 
@@ -31,25 +35,25 @@ void Gameplay::move() {
 
 	string move;
 
-	int old_ver = ver;		//saves current position of ver and hor before moving
-	int old_hor = hor;
+	int old_axis_X = axis_X;		//saves current position of ver and hor before moving
+	int old_axis_Y = axis_Y;
 
 	cout << " In what direction would you like to move?" << endl;
 	cin >> move;
 
 	if (move == "north" || move == "N" || move == "North") {
 
-		if (ver < map_max && (!wall(ver+1,hor)) ) ++ver;
+		if (axis_Y < map_max && (!check_for_wall(axis_Y+1,axis_X)) ) ++axis_Y;
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
 
 	else if (move == "north-east" || move == "NE" || move == "ne" || move == "North-East") {
 
-		if (ver < map_max && hor > 0) {
+		if (axis_Y < map_max && axis_X > 0) {
 
-			++ver;
-			--hor;
+			++axis_Y;
+			--axis_X;
 		}
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
@@ -57,10 +61,10 @@ void Gameplay::move() {
 
 	else if (move == "north-west" || move == "NW" || move == "nw" || move == "North-West") {
 
-		if (ver < map_max && hor < map_max) {
+		if (axis_Y < map_max && axis_X < map_max) {
 
-			++ver;
-			++hor;
+			++axis_Y;
+			++axis_X;
 		}
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
@@ -69,7 +73,7 @@ void Gameplay::move() {
 
 	else if (move == "south" || move == "S" || move == "South") {
 
-		if (ver > 0) --ver;
+		if (axis_Y > 0) --axis_Y;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 
@@ -77,10 +81,10 @@ void Gameplay::move() {
 
 	else if (move == "SE" || move == "se" || move == "South-East" || move == "south-east") {
 
-		if (ver > 0 && hor > 0) {
+		if (axis_Y > 0 && axis_X > 0) {
 
-			--ver;
-			--hor;
+			--axis_Y;
+			--axis_X;
 
 		}
 
@@ -90,10 +94,10 @@ void Gameplay::move() {
 
 	else if (move == "SW" || move == "sw" || move == "South-West" || move == "south-west") {
 
-		if (ver > 0 && hor < map_max) {
+		if (axis_Y > 0 && axis_X < map_max) {
 
-			--ver;
-			++hor;
+			--axis_Y;
+			++axis_X;
 		}
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
@@ -102,14 +106,14 @@ void Gameplay::move() {
 
 	else if (move == "east" || move == "E" || move == "East") {
 
-		if (hor > 0) --hor;
+		if (axis_X > 0) --axis_X;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 	}
 
 	else if (move == "west" || move == "W" || move == "West") {
 
-		if (hor < map_max) ++hor;
+		if (axis_X < map_max) ++axis_X;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 
@@ -117,191 +121,11 @@ void Gameplay::move() {
 
 	else cout << " This direction doesn't exist! " << endl;
 
-	if (old_ver != ver || old_hor != hor) {						// checks if either value is changed. If it is, that means the direction we moved to is valid.
-																// which than further suggests that there is a possibillity for an item or a checkpoint to be found on the following position.
-		checkpoints_position();											// otherwise, the functions would run even if we hit a wall.  For example:
-		map_items();											/* in the case of function "map_items()", means we would get a message: " there is no item found!"
-																	even though we've hit the wall, which doesn't make very much sense. */
-	}
+	if (old_axis_Y != axis_Y || old_axis_X != axis_X) {
 
-}
-
-void Gameplay::help() {
-
-	cout << endl;
-	cout << " **** LIST OF AVALIABLE COMMANDS **** " << endl;
-	cout << endl;
-	cout << " ''move'' - gives you an option to move in wanted direction" << endl;
-	cout << " ''help'' - helps you with commands" << endl;
-	cout << " ''stats'' - gives you your current stats ( e.d Money, Health etc.. ) " << endl;
-	cout << " ''pick'' - picks up an item and stores it in an inventory " << endl;
-	cout << " ''use'' - uses a specific item you have in inventory or you've just picked up " << endl;
-	cout << " ''inventory'' - gives you an overview of your Inventory " << endl;
-	cout << " ''location'' - gives you your exact current location on the map " << endl;
-	cout << " ''clear'' - clears the screen " << endl;
-	cout << endl;
-
-}
-
-void Gameplay::list_invetory() {					// ***** LIST INVENTORY *****
+		item.update_values(axis_Y, axis_X, checkpoint);
+		item.read_located_item();
+		checkpoints_position();
 	
-	cout << endl;
-	cout << " ****** INVENTORY ******" << endl;
-	cout << endl;
-
-	if (!free_slot) cout << " Your inventory is empty! " << endl;
-
-	for (int i = 0; players_items[i] != 0; i++) {
-
-		switch (players_items[i]) {
-
-		case 1: cout << " 1. You have an USB Flash drive. " << endl;
-			break;
-
-		case 2: cout << " 2. You've have an Mobile Sim Card. " << endl;
-			break;
-
-		case 3: cout << " 3. You've have an SD Card. " << endl;
-			break;
-
-		case 4: cout << " 4. You've have a light torch. " << endl;
-			break;
-
-		}
-
 	}
-
-	cout << endl;
-
-}
-
-void Gameplay::use_item() {							// ****** USE ****** ( Not finished yet ) 
-
-	if (!free_slot) {
-
-		cout << " Your inventory is empty. There is nothing to use! " << endl;
-
-	}
-
-	else {
-
-		int answer;
-
-		cout << " In your Invetory: " << endl;
-		cout << endl;
-		list_invetory();
-
-		cout << endl;
-		cout << " What Item do you wish to use? ( Choose a number ) " << endl;
-		cin >> answer;
-
-		item_num = answer;
-
-		if (item_picked()) {
-
-			switch (answer) {
-
-			case 1: cout << "You've chosen the USB!" << endl;				// replace cout statements with real functions
-				break;
-
-			case 2: cout << " You've chosen the SIM Card!" << endl;
-				break;
-
-			case 3: cout << " You've chosen the SD Card! " << endl;
-				break;
-
-			case 4: cout << " You've chosen the Light Torch! " << endl;
-				break;
-			
-			}
-
-		}
-
-		else {
-
-			cout << " You don't have an item under number " << answer << " in your inventory! Please, try again. " << endl;
-			cout << endl;
-			use_item();
-		}
-	}
-
-	enter_command();
-
-}
-
-void Gameplay::read_location() {
-
-	cout << endl;
-	cout << " Your current location is " << ver << " vertically and " << hor << " horizontally. " << endl;
-	cout << endl;
-
-}
-
-void Gameplay::players_data() {
-
-	cout << endl;
-	cout << " Players name: " << name << endl;
-	cout << " Player age: " << age << endl;
-	cout << " Money: " << money << " $" << endl;
-	cout << " Health: " << health << " hp" << endl;
-	cout << endl;
-}
-
-
-void Gameplay::pick_item() {
-
-	if (item_num == 0) {
-
-		cout << " There is no item at this location to pick! " << endl;
-
-	}
-
-	else {
-
-		players_items[free_slot++] = item_num;
-		cout << " This Item has now been saved to your Inventory!" << endl;
-
-	}
-}
-
-bool Gameplay::item_picked() {
-
-	for (int i = 0; players_items[i] != 0; i++) {
-
-		if ( players_items[i] == item_num) {
-
-			return true;
-
-		}
-
-	}
-
-	return false;
-
-}
-
-void Gameplay::checkpoints_position() {
-
-	if (ver == 1 && hor == 2) {
-
-		cout << endl;
-		cout << "MESSAGE: Success! You found the terminal! " << endl;
-		cout << endl;
-
-		cout << " ***OBJECTIVE*** " << endl;
-		checkpoint_one();
-
-	}
-
-	if (ver == 4 && hor == 6) {
-
-		cout << endl;
-		cout << "MESSAGE: Success! You made it to your second checkpoint! " << endl;
-		cout << endl;
-
-		cout << " ***OBJECTIVE*** " << endl;
-		checkpoint_two();
-
-	}
-
 }

@@ -3,6 +3,32 @@
 #include "stdafx.h"
 #include "Gameplay.h"
 
+void Gameplay::checkpoints_position() {
+
+	if (axis_Y == 3 && axis_X == 4) {
+
+		cout << endl;
+		cout << "MESSAGE: Success! You found the terminal! " << endl;
+		cout << endl;
+
+		cout << " ***OBJECTIVE*** " << endl;
+		checkpoint_one();
+
+	}
+
+	if (axis_Y == 4 && axis_X == 6) {
+
+		cout << endl;
+		cout << "MESSAGE: Success! You made it to your second checkpoint! " << endl;
+		cout << endl;
+
+		cout << " ***OBJECTIVE*** " << endl;
+		checkpoint_two();
+
+	}
+
+}
+
 void Gameplay::checkpoint_null() {
 
 	cout << " Your first objective will be to find out the exact location of the remaining team of humans in New York. " << endl;
