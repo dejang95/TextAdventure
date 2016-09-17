@@ -9,6 +9,7 @@ using namespace std;
 void Gameplay::enter_command() {
 
 	string action;
+	string direction;
 
 	while (true) {
 
@@ -18,7 +19,7 @@ void Gameplay::enter_command() {
 		cout << " What would you like to do next? [ Hint: If you wish to see the list of avaliable commands, type in ''help''.] " << endl;
 		cin >> action;
 
-		if (action == "move") move();
+		if (action == "go") { cin >> direction;  move_player(direction); }
 		else if (action == "help") print.commands();
 		else if (action == "pick") item.save();
 		else if (action == "inventory") item.read_inventory();
@@ -31,24 +32,19 @@ void Gameplay::enter_command() {
 	}
 }
 
-void Gameplay::move() {	
-
-	string move;
+void Gameplay::move_player(string direction) {	
 
 	int old_axis_X = axis_X;		//saves current position of ver and hor before moving
 	int old_axis_Y = axis_Y;
 
-	cout << " In what direction would you like to move?" << endl;
-	cin >> move;
+	if (direction == "north" || direction == "N" || direction == "North") {
 
-	if (move == "north" || move == "N" || move == "North") {
-
-		if (axis_Y < map_max && (!check_for_wall(axis_Y+1,axis_X)) ) ++axis_Y;
+		if (axis_Y < map_max && (!check_for_wall(axis_Y+1,axis_X)) ) ++axis_Y;		// wall function yet to be implemented
 
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
 
-	else if (move == "north-east" || move == "NE" || move == "ne" || move == "North-East") {
+	else if (direction == "north-east" || direction == "NE" || direction == "ne" || direction == "North-East") {
 
 		if (axis_Y < map_max && axis_X > 0) {
 
@@ -59,7 +55,7 @@ void Gameplay::move() {
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
 
-	else if (move == "north-west" || move == "NW" || move == "nw" || move == "North-West") {
+	else if ( direction == "north-west" || direction == "NW" || direction == "nw" || direction == "North-West") {
 
 		if (axis_Y < map_max && axis_X < map_max) {
 
@@ -71,7 +67,7 @@ void Gameplay::move() {
 
 	}
 
-	else if (move == "south" || move == "S" || move == "South") {
+	else if (direction == "south" || direction == "S" || direction == "South") {
 
 		if (axis_Y > 0) --axis_Y;
 
@@ -79,7 +75,7 @@ void Gameplay::move() {
 
 	}
 
-	else if (move == "SE" || move == "se" || move == "South-East" || move == "south-east") {
+	else if (direction == "SE" || direction == "se" || direction == "South-East" || direction == "south-east") {
 
 		if (axis_Y > 0 && axis_X > 0) {
 
@@ -92,7 +88,7 @@ void Gameplay::move() {
 
 	}
 
-	else if (move == "SW" || move == "sw" || move == "South-West" || move == "south-west") {
+	else if (direction == "SW" || direction == "sw" || direction == "South-West" || direction == "south-west") {
 
 		if (axis_Y > 0 && axis_X < map_max) {
 
@@ -104,14 +100,14 @@ void Gameplay::move() {
 
 	}
 
-	else if (move == "east" || move == "E" || move == "East") {
+	else if (direction == "east" || direction == "E" || direction == "East") {
 
 		if (axis_X > 0) --axis_X;
 
 		else cout << " This street is blocked, you cannot go there! " << endl;
 	}
 
-	else if (move == "west" || move == "W" || move == "West") {
+	else if (direction == "west" || direction == "W" || direction == "West") {
 
 		if (axis_X < map_max) ++axis_X;
 

@@ -13,7 +13,7 @@ void Print::commands() {
 	cout << endl;
 	cout << " **** LIST OF AVALIABLE COMMANDS **** " << endl;
 	cout << endl;
-	cout << " ''move'' - gives you an option to move in wanted direction" << endl;
+	cout << " ''go [direction] '' - moves a player to a wanted position" << endl;
 	cout << " ''help'' - helps you with commands" << endl;
 	cout << " ''stats'' - gives you your current stats ( e.d Money, Health etc.. ) " << endl;
 	cout << " ''pick'' - picks up an item and stores it in an inventory " << endl;

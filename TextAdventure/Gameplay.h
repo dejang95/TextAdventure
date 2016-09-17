@@ -27,7 +27,7 @@ public:
 
 	void enter_command();		// prompts the user to enter the next action
 
-	void move();	// makes it possible for the user to move in wanted direction
+	void move_player(string direction);	// makes it possible for the user to move in wanted direction
 
 	bool check_for_wall(int vertically, int horizontally);	// sets walls on the map for the user
 
