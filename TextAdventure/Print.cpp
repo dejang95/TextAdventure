@@ -13,14 +13,14 @@ void Print::commands() {
 	cout << endl;
 	cout << " **** LIST OF AVALIABLE COMMANDS **** " << endl;
 	cout << endl;
-	cout << " ''go [direction] '' - moves a player to a wanted position" << endl;
-	cout << " ''help'' - helps you with commands" << endl;
-	cout << " ''stats'' - gives you your current stats ( e.d Money, Health etc.. ) " << endl;
-	cout << " ''pick'' - picks up an item and stores it in an inventory " << endl;
-	cout << " ''use'' - uses a specific item you have in inventory or you've just picked up " << endl;
-	cout << " ''inventory'' - gives you an overview of your Inventory " << endl;
-	cout << " ''location'' - gives you your exact current location on the map " << endl;
-	cout << " ''clear'' - clears the screen " << endl;
+	cout << " ''go [direction]'' - moves a player to a wanted position | Abbreviation: 'g' " << endl;
+	cout << " ''help'' - helps you with commands | Abbreviation: 'h' " << endl;
+	cout << " ''stats'' - gives you your current stats ( e.d Money, Health etc.. ) | Abbreviation: 's' " << endl;
+	cout << " ''pick'' - picks up an item and stores it in an inventory | Abbreviation: 'p' " << endl;
+	cout << " ''use'' - uses a specific item you have in inventory or you've just picked up | Abbreviation: 'u' " << endl;
+	cout << " ''inventory'' - gives you an overview of your Inventory | Abbreviation: 'i' " << endl;
+	cout << " ''location'' - gives you your exact current location on the map | Abbreviation: 'l' " << endl;
+	cout << " ''clear'' - clears the screen | Abbrevation: 'c' " << endl;
 	cout << endl;
 
 }

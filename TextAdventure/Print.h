@@ -15,12 +15,12 @@ public:
 
 	~Print();
 
+	void update_values(int y_axis, int x_axis, string name, int age, int health, int money);	// updates values of variables trough this function
+
 	void players_data();	// reads players data like: name, age, money, health
 
 	void commands();	// gives a list of commands
 
 	void location();	// give an exact position on the map
-	
-	void update_values(int y_axis, int x_axis, string name, int age, int health, int money);	// updates values of variables trough this function
-};
 
+};
