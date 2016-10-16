@@ -32,7 +32,7 @@ void Gameplay::enter_command() {
 	}
 }
 
-void Gameplay::move_player(string direction) {	
+void Gameplay::move_player(string direction) {
 
 	int old_axis_X = axis_X;		//saves current position of ver and hor before moving
 	int old_axis_Y = axis_Y;
@@ -45,18 +45,18 @@ void Gameplay::move_player(string direction) {
 
 	else if (direction == "north-east" || direction == "NE" || direction == "ne" || direction == "North-East") {
 
-		if (axis_Y < map_max && axis_X > 0) {
+		if (axis_Y < map_max && axis_X < map_max) {
 			++axis_Y;
-			--axis_X;
+			++axis_X;
 		}
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
 
 	else if ( direction == "north-west" || direction == "NW" || direction == "nw" || direction == "North-West") {
 
-		if (axis_Y < map_max && axis_X < map_max) {
+		if (axis_Y < map_max && axis_X > 0 ) {
 			++axis_Y;
-			++axis_X;
+			--axis_X;
 		}
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
@@ -69,16 +69,6 @@ void Gameplay::move_player(string direction) {
 
 	else if (direction == "SE" || direction == "se" || direction == "South-East" || direction == "south-east") {
 
-		if (axis_Y > 0 && axis_X > 0) {
-			--axis_Y;
-			--axis_X;
-		}
-		else cout << " This street is blocked, you cannot go there! " << endl;
-
-	}
-
-	else if (direction == "SW" || direction == "sw" || direction == "South-West" || direction == "south-west") {
-
 		if (axis_Y > 0 && axis_X < map_max) {
 			--axis_Y;
 			++axis_X;
@@ -87,15 +77,25 @@ void Gameplay::move_player(string direction) {
 
 	}
 
+	else if (direction == "SW" || direction == "sw" || direction == "South-West" || direction == "south-west") {
+
+		if (axis_Y > 0 && axis_X > 0) {
+			--axis_Y;
+			--axis_X;
+		}
+		else cout << " This street is blocked, you cannot go there! " << endl;
+
+	}
+
 	else if (direction == "east" || direction == "E" || direction == "East") {
 
-		if (axis_X > 0) --axis_X;
+		if (axis_X < map_max) ++axis_X;
 		else cout << " This street is blocked, you cannot go there! " << endl;
 	}
 
 	else if (direction == "west" || direction == "W" || direction == "West") {
 
-		if (axis_X < map_max) ++axis_X;
+		if (axis_X > 0) --axis_X;
 		else cout << " This street is blocked, you cannot go there! " << endl;
 	}
 
@@ -106,6 +106,6 @@ void Gameplay::move_player(string direction) {
 		item.update_values(axis_Y, axis_X, checkpoint);
 		item.read_located_item();
 		checkpoints_position();
-	
+
 	}
 }
