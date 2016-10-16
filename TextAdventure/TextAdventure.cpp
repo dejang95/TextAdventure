@@ -23,7 +23,7 @@ int main()
 	main_intro();
 	
 	cout << " Please enter your name: " << endl;
-	cin >> name;
+	getline(cin, name);
 
 	cout << " Now enter your age: " << endl;
 	cin >> age;
