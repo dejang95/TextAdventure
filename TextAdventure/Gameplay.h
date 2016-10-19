@@ -19,11 +19,11 @@ class Gameplay
 
 public:
 
-	Gameplay(string name = "player", int age = 18);	// default construcor
+	Gameplay(string name = "Player", int age = 18);	// default construcor
 
 	~Gameplay();	// default deconstructor
 
-	void sitrep();		// situation report
+	void intro();		// situation report
 
 	void enter_command();		// prompts the user to enter the next action
 

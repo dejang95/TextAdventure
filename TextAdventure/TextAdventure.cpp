@@ -32,7 +32,7 @@ int main()
 
 	Gameplay player (name, age);
 
-	player.sitrep();
+	player.intro();
 
 	cout << " **** OBJECTIVE **** " << endl;
 	player.checkpoint_null();

@@ -10,7 +10,7 @@ Gameplay::Gameplay(string name, int age) : name(name), age(age > 0 ? age : 18), 
 
 Gameplay::~Gameplay(){}
 
-void Gameplay::sitrep() {
+void Gameplay::intro() {
 
 	cout << endl;
 	cout << " Hello, " << name << endl;
