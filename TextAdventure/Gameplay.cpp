@@ -14,9 +14,12 @@ void Gameplay::intro() {
 
 	cout << endl;
 	cout << " Hello, " << name << endl;
-	cout << " It is the year 2025 and one of the main philosphical question has been solved. Are we alone in the universe? ";
-	cout << " And we didn't like the answer. They are all over the place. They are taking our planet part by part, and it seems they are unstopable. ";
-	cout << " We have to fight this battle to the end. It depends on us if we are going to survive.  " << endl;
+	cout << endl;
+	cout << " Welcome to the Dejan's first Text Adventure game. You are about to embark on a rich adventure of saving a human race from this new threat." << endl;
+	cout << " The story takes place in New York, the year is 2045 and after so many years of Hollywood projections, one of them has finally come true. " << endl;
+	cout << " The third kind has invaded our world. Many lives have been already lost and the number will not end there. These creatures seem to be unstoppable. " << endl;
+	cout << " We have to fight this battle untill the very end. History will be written after this, the only question is, who'll have the privilege to tell it? " << endl;
+	cout << " Godspeed young soldier, may the luck be on your side! " << endl;
 	cout << endl;
 
 }
