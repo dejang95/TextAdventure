@@ -29,8 +29,6 @@ public:
 
 	void move_player(string direction);	// makes it possible for the user to move in wanted direction
 
-	bool check_for_wall(int vertically, int horizontally);	// sets walls on the map for the user
-
 	void checkpoints_position();	// checks if on the user's position there is a checkpoint
 
 	void checkpoint_null();	// first objective
