@@ -39,7 +39,7 @@ void Gameplay::move_player(string direction) {
 
 	if (direction == "north" || direction == "N" || direction == "North") {
 
-		if (axis_Y < map_max && (!check_for_wall(axis_Y+1,axis_X)) ) ++axis_Y;		// wall function yet to be implemented
+		if (axis_Y < map_max ) ++axis_Y;		// wall function yet to be implemented
 		else cout << " Street is blocked, you cannot go there! " << endl;
 	}
 
