@@ -11,7 +11,7 @@ int main()
 {
 	int age = 0;
 	string name;
-	
+
 	cout << " Please enter your name: " << endl;
 	getline(cin, name);
 
@@ -20,7 +20,7 @@ int main()
 
 	system("cls");
 
-	Gameplay player (name, age);
+	Gameplay player(name, age);
 
 	player.intro();
 
@@ -29,4 +29,3 @@ int main()
 
 	return 0;
 }
-

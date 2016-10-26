@@ -27,4 +27,3 @@ public:
 	void update_values(int axis_Y, int axis_X, int checkpoint); // updates location and checkpoint values from function "Gameplay::move() and Gameplay::actions()
 
 };
-

@@ -4,6 +4,7 @@
 #include "Gameplay.h"
 #include "Print.h"
 #include "Items.h"
+#include "Walls.h"
 using namespace std;
 
 Gameplay::Gameplay(string name, int age) : name(name), age(age > 0 ? age : 18), checkpoint(0), axis_X(0), axis_Y(1), money(20), health(100), item(axis_Y, axis_X, checkpoint), print(axis_Y, axis_X, this->name, this->age, health, money) {}

@@ -4,6 +4,7 @@
 #include "Gameplay.h"
 #include "Items.h"
 #include "Print.h"
+#include "Walls.h"
 using namespace std;
 
 void Gameplay::enter_command() {
@@ -19,7 +20,7 @@ void Gameplay::enter_command() {
 		cout << " What would you like to do next? [ Hint: If you wish to see the list of avaliable commands, type in ''help''.] " << endl;
 		cin >> action;
 
-		if (action == "go" || action == "g") { cin >> direction;  move_player(direction); }
+		if (action == "go" || action == "g") { getline(cin, direction);  move_player(direction); }
 		else if (action == "help" || action == "h") print.commands();
 		else if (action == "pick" || action == "p") item.save();
 		else if (action == "inventory" || action == "i") item.read_inventory();
@@ -32,80 +33,42 @@ void Gameplay::enter_command() {
 	}
 }
 
+string Gameplay::identify_direction(string direction)
+{
+	if (direction == " north" || direction == " N" || direction == " North" || direction == " n") return "n";
+	else if (direction == " north east" || direction == " NE" || direction == " ne" || direction == " North East") return "ne";
+	else if (direction == " north west" || direction == " NW" || direction == " nw" || direction == " North West") return "nw";
+	else if (direction == " south" || direction == " S" || direction == " South" || direction == " s") return "s";
+	else if (direction == " SE" || direction == " se" || direction == " South East" || direction == " south east") return "se";
+	else if (direction == " SW" || direction == " sw" || direction == " South West" || direction == " south west") return "sw";
+	else if (direction == " east" || direction == " E" || direction == " East" || direction == " e") return "e";
+	else if (direction == " west" || direction == " W" || direction == " West" || direction == " w") return "w";
+	else return "0";
+}
+
 void Gameplay::move_player(string direction) {
 
 	int old_axis_X = axis_X;		//saves current position of ver and hor before moving
 	int old_axis_Y = axis_Y;
 
-	if (direction == "north" || direction == "N" || direction == "North") {
+	if (!wall.check_for_walls(axis_X, axis_Y, identify_direction(direction)) ) {
 
-		if (axis_Y < map_max ) ++axis_Y;		// wall function yet to be implemented
-		else cout << " Street is blocked, you cannot go there! " << endl;
+		if (identify_direction(direction) == "n") ++axis_Y;
+		else if (identify_direction(direction) == "ne") { ++axis_Y; ++axis_X; }
+		else if (identify_direction(direction) == "nw") { ++axis_Y; --axis_X; }
+		else if (identify_direction(direction) == "s") --axis_Y;
+		else if (identify_direction(direction) == "se") { --axis_Y; ++axis_X; }
+		else if (identify_direction(direction) == "sw") { --axis_Y; --axis_X; }
+		else if (identify_direction(direction) == "e") ++axis_X;
+		else if (identify_direction(direction) == "w") --axis_X;
+		else cout << " This direction doesn't exist! " << endl;
 	}
 
-	else if (direction == "north-east" || direction == "NE" || direction == "ne" || direction == "North-East") {
-
-		if (axis_Y < map_max && axis_X < map_max) {
-			++axis_Y;
-			++axis_X;
-		}
-		else cout << " Street is blocked, you cannot go there! " << endl;
-	}
-
-	else if ( direction == "north-west" || direction == "NW" || direction == "nw" || direction == "North-West") {
-
-		if (axis_Y < map_max && axis_X > 0 ) {
-			++axis_Y;
-			--axis_X;
-		}
-		else cout << " Street is blocked, you cannot go there! " << endl;
-	}
-
-	else if (direction == "south" || direction == "S" || direction == "South") {
-
-		if (axis_Y > 0) --axis_Y;
-		else cout << " This street is blocked, you cannot go there! " << endl;
-	}
-
-	else if (direction == "SE" || direction == "se" || direction == "South-East" || direction == "south-east") {
-
-		if (axis_Y > 0 && axis_X < map_max) {
-			--axis_Y;
-			++axis_X;
-		}
-		else cout << " This street is blocked, you cannot go there! " << endl;
-
-	}
-
-	else if (direction == "SW" || direction == "sw" || direction == "South-West" || direction == "south-west") {
-
-		if (axis_Y > 0 && axis_X > 0) {
-			--axis_Y;
-			--axis_X;
-		}
-		else cout << " This street is blocked, you cannot go there! " << endl;
-
-	}
-
-	else if (direction == "east" || direction == "E" || direction == "East") {
-
-		if (axis_X < map_max) ++axis_X;
-		else cout << " This street is blocked, you cannot go there! " << endl;
-	}
-
-	else if (direction == "west" || direction == "W" || direction == "West") {
-
-		if (axis_X > 0) --axis_X;
-		else cout << " This street is blocked, you cannot go there! " << endl;
-	}
-
-	else cout << " This direction doesn't exist! " << endl;
+	else cout << " This direction is blocked, you cannot go there! " << endl;
 
 	if (old_axis_Y != axis_Y || old_axis_X != axis_X) {
-
 		item.update_values(axis_Y, axis_X, checkpoint);
 		item.read_located_item();
 		checkpoints_position();
-
 	}
 }
